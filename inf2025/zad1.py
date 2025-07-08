@@ -1,6 +1,6 @@
 count = 0
 
-def przedstaw(n):
+def przestaw(n):
     global count
     count = count + 1
 
@@ -10,7 +10,7 @@ def przedstaw(n):
     n = n // 100
 
     if n > 0:
-        w = a + 10 * b + 100 * przedstaw(n)
+        w = a + 10 * b + 100 * przestaw(n)
         return w
     else:
         if a > 0:
@@ -20,11 +20,51 @@ def przedstaw(n):
             w = b
             return w
         
+# 1.1
+print("1.1")
+
 numbers = [43657688, 154005710, 998877665544321]
 
-for i in range(3):
+for i in range(len(numbers)):
     number = numbers[i]
     
-    w = przedstaw(number)
+    w = przestaw(number)
     print(str(number) + " => " + str(w) + " (" + str(count) + ")")
     count = 0
+
+# 1.2
+print("\n1.2")
+
+def countRuns(n):
+    global count
+    count = 0
+
+    przestaw(n)
+
+    return count
+
+# Some random numbers
+input = [ 2, 59, 103, 5821, 57239 ]
+output = [True, True, True, True]
+
+for i in range(len(input)):
+    number = input[i]
+    
+    k = len(str(number))
+
+    c = countRuns(number)
+
+    if not (c == k / 2): 
+        output[0] = False
+
+    if not (c == (k+1) // 2): 
+        output[1] = False
+
+    if not (k % 2 == 0 and c == k / 2 or k % 2 == 1 and c == (k + 1) / 2): 
+        output[2] = False
+
+    if not (c == (k + 1) / 2): 
+        output[3] = False
+
+for i in range(len(output)):
+    print(str(i + 1) + ". " + str(output[i]))
