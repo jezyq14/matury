@@ -31,7 +31,7 @@ output = []
 for i in range(len(lines)):
     line = lines[i]
 
-    for j in range(len(line)):
+    for j in range(len(line)):  
         character = line[j]
 
         if(len(lines) >= i + 3 
@@ -43,3 +43,42 @@ for i in range(len(lines)):
 print("Ilość: " + str(len(output)))
 for x in output:
     print(str(x[0]) + ", " + str(x[1]) + "; ")
+
+# 2.3
+print("\n2.3")
+
+max = [0, 0]
+for i in range(len(lines)):
+    line = lines[i].replace("o", "0").replace("+", "1").replace("*", "2")
+
+    sum = 0
+    for j in range(len(line)):
+        sum += int(line[len(line) - 1 - j]) * pow(3, j)
+    
+    if sum > max[0]:
+        max = [sum, i]
+
+print(f"{max[0]} {lines[max[1]]}")
+
+# 2.4
+print("\n2.4")
+
+summed = 0
+for i in range(len(lines)):
+    line = lines[i].replace("o", "0").replace("+", "1").replace("*", "2")
+
+    sum = 0
+    for j in range(len(line)):
+        sum += int(line[len(line) - 1 - j]) * pow(3, j)
+    
+    summed += sum
+
+print(summed)
+
+res = ""
+
+while summed > 0:
+    res = str(summed % 3) + res
+    summed //= 3
+
+print(res.replace("0", "o").replace("1", "+").replace("2", "*"))
