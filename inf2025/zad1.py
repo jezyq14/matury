@@ -68,3 +68,33 @@ for i in range(len(input)):
 
 for i in range(len(output)):
     print(str(i + 1) + ". " + str(output[i]))
+
+# 1.3
+print("\n1.3")
+
+def przestaw2(n):
+    w = 0
+    p = 1
+
+    while n > 0:
+        r = n % 100
+        a = r // 10
+        b = r % 10
+
+        if n > 9:
+            w = p * a + 10 * p * b + w
+        else:
+            w = p * b + w
+        
+        n = n // 100
+        p *= 100
+    
+    return w
+
+for i in range(len(numbers)):
+    number = numbers[i]
+    
+    w = przestaw(number)
+    w2 = przestaw2(number)
+
+    print(str(number) + ": " + ("poprawnie" if w == w2 else "błąd"))
