@@ -19,7 +19,7 @@ for i in range(len(lines)):
             b = a % b
             a = temp
 
-    if a > 1: 
-        count += 1
+        if a > 1: 
+            count += 1
 
 print(count)
